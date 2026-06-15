@@ -725,6 +725,7 @@
         </p>
         <div class="gallery-copy__pager" aria-label="Selector de proyectos">
           <button class="gallery-copy__dot is-active" type="button" data-project="bonobon" aria-label="Ver Bon o Bon"></button>
+          <button class="gallery-copy__dot" type="button" data-project="tostarica" aria-label="Ver Tostarica"></button>
           <button class="gallery-copy__dot" type="button" data-project="chocolinas" aria-label="Ver Chocolinas"></button>
           <button class="gallery-copy__dot" type="button" data-project="rainbowbio" aria-label="Ver Rainbow Bio"></button>
         </div>
@@ -764,6 +765,14 @@
         mediaType: 'video',
         mediaSrc: 'imagenes/bonobon/video.mp4',
         mediaAlt: 'Bon o Bon - video principal de la galería'
+      },
+      tostarica: {
+        title: 'Tostarica social media',
+        subtitle: '2025',
+        description: 'Creación de contenido para redes sociales de Tostarica con licencias de SpongeBob.',
+        mediaType: 'video',
+        mediaSrc: 'imagenes/tostarica/Bobesponja.mp4',
+        mediaAlt: 'Tostarica - video principal de la galería'
       },
       chocolinas: {
         title: 'Chocolinas social media',
@@ -952,6 +961,57 @@
             { type: 'image', src: 'imagenes/bonobon/1.png', alt: 'Post de Bon o Bon 1' },
             { type: 'image', src: 'imagenes/bonobon/sims14-5.jpg', alt: 'Post de Bon o Bon Sims 1 4 5' },
             { type: 'image', src: 'imagenes/bonobon/Trampa.png', alt: 'Post de Bon o Bon Trampa' }
+          ]
+        }
+      ],
+      tostarica: [
+        {
+          type: 'post',
+          observe: false,
+          items: [
+            { type: 'image', src: 'imagenes/tostarica/adivina%20minion/AdivinaMinion-1.png', alt: 'Post Tostarica Adivina Minion' },
+            { type: 'image', src: 'imagenes/tostarica/anuncio%20pack/AnuncioPack.jpg', alt: 'Post Tostarica Anuncio Pack' },
+            { type: 'image', src: 'imagenes/tostarica/licencia-2.png', alt: 'Post Tostarica Licencia' },
+            { type: 'image', src: 'imagenes/tostarica/sorteo/Sorteo.png', alt: 'Post Tostarica Sorteo' }
+          ]
+        },
+        {
+          type: 'story',
+          items: [
+            {
+              label: 'Story Tostarica 1',
+              noFill: true,
+              images: ['video:imagenes/tostarica/Bobesponja.mp4', 'video:imagenes/tostarica/Cangrejovideo.mp4', 'video:imagenes/tostarica/Calamardov-2.mp4'],
+              preview: { type: 'video', src: 'imagenes/tostarica/Bobesponja.mp4' }
+            },
+            {
+              label: 'Story Tostarica 2',
+              noFill: true,
+              images: ['video:imagenes/tostarica/aprende%20a%20BOB/Dibujabob-Slide1.mp4', 'video:imagenes/tostarica/aprende%20a%20BOB/DibujaBob-Slide2.mp4', 'video:imagenes/tostarica/aprende%20a%20BOB/DibujaBob-Slide3.mp4'],
+              preview: { type: 'video', src: 'imagenes/tostarica/aprende%20a%20BOB/Dibujabob-Slide1.mp4' }
+            },
+            {
+              label: 'Story Tostarica 3',
+              noFill: false,
+              images: ['imagenes/tostarica/Laberinto/Laberinto-1.jpg', 'imagenes/tostarica/Laberinto/Laberinto-2.png', 'imagenes/tostarica/adivina%20minion/AdivinaMinion-1.png'],
+              preview: { type: 'image', src: 'imagenes/tostarica/Laberinto/Laberinto-1.jpg', alt: 'Story Tostarica Laberinto' }
+            },
+            {
+              label: 'Story Tostarica 4',
+              noFill: true,
+              images: ['video:imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Quelicenciaseravid..mp4', 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/9-!6.png', 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Qu%C3%A9licenciaser%C3%A14.5.jpg'],
+              preview: { type: 'video', src: 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Quelicenciaseravid..mp4' }
+            }
+          ]
+        },
+        {
+          type: 'post',
+          observe: true,
+          items: [
+            { type: 'image', src: 'imagenes/tostarica/Laberinto/Laberinto-1.jpg', alt: 'Post Tostarica Laberinto 1' },
+            { type: 'image', src: 'imagenes/tostarica/Laberinto/Laberinto-2.png', alt: 'Post Tostarica Laberinto 2' },
+            { type: 'image', src: 'imagenes/tostarica/adivina%20minion/AdivinaMinion-2%C3%A7.png', alt: 'Post Tostarica Adivina Minion 2' },
+            { type: 'image', src: 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Qu%C3%A9licenciaser%C3%A14.5.jpg', alt: 'Post Tostarica Qué licencia será' }
           ]
         }
       ],

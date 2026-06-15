@@ -897,6 +897,24 @@
       </div>
     `;
 
+    const buildMixedRow = (storyItem, postItems, observe = false) => `
+      <div class="gallery-row${observe ? ' gallery-row--observe' : ''}">
+        <button class="gallery-thumb gallery-thumb--story ${storyItem.noFill ? 'story-no-fill ' : ''}gallery-thumb--intro gallery-thumb--intro-onload gallery-thumb--intro-1" type="button" aria-label="${storyItem.label}" data-images="${storyItem.images.join('|')}">
+          <div class="gallery-story__inner">
+            <div class="gallery-story__progress" aria-hidden="true">
+              ${storyItem.images.map((_, i) => `<span class="gallery-story__bar${i === 0 ? ' is-active' : ''}"></span>`).join('')}
+            </div>
+            ${buildMediaTag(storyItem.preview)}
+          </div>
+        </button>
+        ${postItems.map((item, index) => `
+          <div class="gallery-thumb gallery-thumb--post gallery-thumb--intro gallery-thumb--intro-onload gallery-thumb--intro-${index + 2}">
+            ${buildMediaTag(item)}
+          </div>
+        `).join('')}
+      </div>
+    `;
+
     const buildStoryRow = (items) => `
       <div class="gallery-row gallery-row--observe">
         ${items.map((item, index) => `
@@ -976,32 +994,18 @@
           ]
         },
         {
-          type: 'story',
-          items: [
-            {
-              label: 'Story Tostarica 1',
-              noFill: true,
-              images: ['video:imagenes/tostarica/Bobesponja.mp4', 'video:imagenes/tostarica/Cangrejovideo.mp4', 'video:imagenes/tostarica/Calamardov-2.mp4'],
-              preview: { type: 'video', src: 'imagenes/tostarica/Bobesponja.mp4' }
-            },
-            {
-              label: 'Story Tostarica 2',
-              noFill: true,
-              images: ['video:imagenes/tostarica/aprende%20a%20BOB/Dibujabob-Slide1.mp4', 'video:imagenes/tostarica/aprende%20a%20BOB/DibujaBob-Slide2.mp4', 'video:imagenes/tostarica/aprende%20a%20BOB/DibujaBob-Slide3.mp4'],
-              preview: { type: 'video', src: 'imagenes/tostarica/aprende%20a%20BOB/Dibujabob-Slide1.mp4' }
-            },
-            {
-              label: 'Story Tostarica 3',
-              noFill: false,
-              images: ['imagenes/tostarica/Laberinto/Laberinto-1.jpg', 'imagenes/tostarica/Laberinto/Laberinto-2.png', 'imagenes/tostarica/adivina%20minion/AdivinaMinion-1.png'],
-              preview: { type: 'image', src: 'imagenes/tostarica/Laberinto/Laberinto-1.jpg', alt: 'Story Tostarica Laberinto' }
-            },
-            {
-              label: 'Story Tostarica 4',
-              noFill: true,
-              images: ['video:imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Quelicenciaseravid..mp4', 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/9-!6.png', 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Qu%C3%A9licenciaser%C3%A14.5.jpg'],
-              preview: { type: 'video', src: 'imagenes/tostarica/Qu%C3%A9%20licencia%20ser%C3%A1/Quelicenciaseravid..mp4' }
-            }
+          type: 'mixed',
+          observe: false,
+          storyItem: {
+            label: 'Story Tostarica 1',
+            noFill: true,
+            images: ['video:imagenes/tostarica/Bobesponja.mp4', 'video:imagenes/tostarica/Cangrejovideo.mp4', 'video:imagenes/tostarica/Calamardov-2.mp4'],
+            preview: { type: 'video', src: 'imagenes/tostarica/Bobesponja.mp4' }
+          },
+          postItems: [
+            { type: 'video', src: 'imagenes/tostarica/aprende%20a%20BOB/Dibujabob-Slide1.mp4', alt: 'Post Tostarica Aprende a Bob' },
+            { type: 'image', src: 'imagenes/tostarica/Laberinto/Laberinto-1.jpg', alt: 'Post Tostarica Laberinto' },
+            { type: 'image', src: 'imagenes/tostarica/adivina%20minion/AdivinaMinion-1.png', alt: 'Post Tostarica Adivina Minion' }
           ]
         },
         {
@@ -1320,6 +1324,10 @@
       galleryThumbs.innerHTML = rows.map((row) => {
         if (row.type === 'story') {
           return buildStoryRow(row.items);
+        }
+
+        if (row.type === 'mixed') {
+          return buildMixedRow(row.storyItem, row.postItems, row.observe);
         }
 
         return buildPostRow(row.items, row.observe);
